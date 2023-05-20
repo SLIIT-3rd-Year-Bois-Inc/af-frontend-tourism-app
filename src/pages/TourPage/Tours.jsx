@@ -27,19 +27,11 @@ function TourPage() {
     },
   };
 
-  let tours = new Array(5).fill({
-    id: "1",
-    tag: "Culture Sharper",
-    title: "Explore the Best Places",
-    desc: `Sigiriya is a fascinating historical and cultural site located in central Sri Lanka. This UNESCO World Heritage Site is renowned for its stunning rock fortress, which sits atop a massive rock plateau that rises 200 meters above the surrounding jungle.\nVisitors to Sigiriya can explore the ancient ruins of the fortress, which date back to the 5th century AD. The fortress was built by King Kasyapa as a palace and fortress, and it is adorned with intricate frescoes, elaborate water gardens, and sophisticated engineering marvels.`,
-    features: {
-      duration: "8 hours",
-      meetingPoint: "Meeting point:\nExit B, Outram Park MRT Station",
-      info: "Booking required upon request",
-    },
-    image:
-      "https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__2350bp/public/live_banner/Sigiriya.jpg",
-  });
+  const { isLoading, error, data } = useQuery("tour", () =>
+    axios.get(`${API_ENDPOINT}/api/tour/${room_id}`)
+  );
+
+  let tours = data?.data;
 
   return (
     <div>

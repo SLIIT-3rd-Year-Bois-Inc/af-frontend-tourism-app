@@ -10,7 +10,7 @@ import { API_ENDPOINT } from "../../config";
 function FoodEditor({ onClickClose, selectedId, editMode }) {
   const qc = useQueryClient();
   const { isLoading, error, data } = useQuery(
-    ["rooms", selectedId],
+    ["food", selectedId],
     () => axios.get(`${API_ENDPOINT}/api/food/${selectedId}`),
     { skip: !editMode }
   );
